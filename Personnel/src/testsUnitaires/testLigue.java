@@ -1,29 +1,80 @@
 package testsUnitaires;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Before;
+import java.text.SimpleDateFormat;
+
 import org.junit.jupiter.api.Test;
 
-import personnel.*;
+import personnel.Employe;
+import personnel.GestionPersonnel;
+import personnel.Ligue;
+import personnel.SauvegardeImpossible;
 
 class testLigue 
 {
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 	
 	@Test
-	void createLigue() throws SauvegardeImpossible
+	void testAddLigue() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
 		assertEquals("Fléchettes", ligue.getNom());
-		//assertTrue(gestionPersonnel.getLigues().contains("Fléchettes"));
+		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 	}
 
 	@Test
-	void addEmploye() throws SauvegardeImpossible
+	void testAddLigueById() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue(1, "Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
+		//assertEquals(1, ligue.getId());
+		assertTrue(gestionPersonnel.getLigues().contains(ligue));
+	}
+	
+	@Test
+	void testAddEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
+	
+	@Test
+	void testGetLigues() throws SauvegardeImpossible{
+		gestionPersonnel.addLigue("Fléchettes");
+		gestionPersonnel.addLigue("Foot");
+		
+		assertEquals(2, gestionPersonnel.getLigues().size());
+	}
+
+	@Test
+	void testGetLigue() throws SauvegardeImpossible{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Employe administrateur = ligue.addEmploye("Admin", "Admin", "admin@gmail.com", "azerty"); 
+		ligue.setAdministrateur(administrateur);
+		
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty");
+		
+		Ligue ligueByAdmin = gestionPersonnel.getLigue(administrateur);
+		assertNotNull(ligueByAdmin);
+		assertEquals(ligue, ligueByAdmin);
+		
+		ligueByAdmin = gestionPersonnel.getLigue(employe);
+		assertNull(ligueByAdmin);
+	}
+	
+	@Test
+	void testRemoveLigues() throws SauvegardeImpossible{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
+		ligue.remove();
+		assertTrue(gestionPersonnel.getLigues().isEmpty());
+	}
+	
+	
 }
