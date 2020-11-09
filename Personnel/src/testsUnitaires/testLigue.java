@@ -16,6 +16,7 @@ class testLigue
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
 		assertEquals("Fléchettes", ligue.getNom());
+		assertTrue(gestionPersonnel.getLigues().contains("Fléchettes"));
 	}
 
 	@Test
