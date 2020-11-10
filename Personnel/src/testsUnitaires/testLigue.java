@@ -18,6 +18,7 @@ class testLigue
 {
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+	static final String PASSWORD = "azerty";
 	
 	@Test
 	void testAddLigue() throws SauvegardeImpossible
@@ -40,7 +41,7 @@ class testLigue
 	void testAddEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", PASSWORD); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	
@@ -55,10 +56,10 @@ class testLigue
 	@Test
 	void testGetLigue() throws SauvegardeImpossible{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Employe administrateur = ligue.addEmploye("Admin", "Admin", "admin@gmail.com", "azerty"); 
+		Employe administrateur = ligue.addEmploye("Admin", "Admin", "admin@gmail.com", PASSWORD); 
 		ligue.setAdministrateur(administrateur);
 		
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", PASSWORD);
 		
 		Ligue ligueByAdmin = gestionPersonnel.getLigue(administrateur);
 		assertNotNull(ligueByAdmin);
