@@ -28,6 +28,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -136,7 +138,26 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.password= password;
 	}
+	
+	public Date getdateArrivee()
+	{
+		return dateArrivee;
+	}
 
+	public void setdateArrivee(Date dateArrivee)
+	{
+		this.dateArrivee = dateArrivee;
+	}
+	
+	public Date getdateDepart()
+	{
+		return dateDepart;
+	}
+
+	public void setdateDeapart(Date dateDepart)
+	{
+		this.dateDepart = dateDepart;
+	}
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.

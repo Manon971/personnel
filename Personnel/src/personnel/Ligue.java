@@ -1,8 +1,9 @@
 package personnel;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -109,11 +110,18 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @return l'employé créé. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom, String mail, String password, Date dateArrivee, Date dateDepart)
+	public Employe addEmploye(String nom, String prenom, String mail, String password, String dateArrivee, String dateDepart)
 	{
-		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee, dateDepart);
-		employes.add(employe);
-		return employe;
+		try {
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+		
+			Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
+			employes.add(employe);
+			return employe;
+		} catch (ParseException ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 	
 	void remove(Employe employe)

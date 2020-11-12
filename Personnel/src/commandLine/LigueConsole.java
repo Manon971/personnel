@@ -98,8 +98,11 @@ public class LigueConsole
 				() -> 
 				{
 					ligue.addEmploye(getString("nom : "), 
-						getString("prenom : "), getString("mail : "), 
-						getString("password : "));
+						getString("prenom : "), 
+						getString("mail : "), 
+						getString("password : "),
+						getString("dateArrivee : "),
+						getString("dateDepart : "));
 				}
 		);
 	}
