@@ -13,6 +13,9 @@ import java.util.Date;
 
 public class Employe implements Serializable, Comparable<Employe>
 {
+	/*
+	 * On rajoute les variables de dateArrivee et dateDepart
+	 */
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
@@ -139,25 +142,43 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password= password;
 	}
 	
+	/**
+	 * Change la date d'arrivée.
+	 * @param dateArrivee la nouvelle date d'arrivée de l'employé. 
+	 */
 	public Date getdateArrivee()
 	{
 		return dateArrivee;
 	}
-
+	
+	/**
+	 * Retourne la date d'arrivée de l'employé.
+	 * @return la date d'arrivée de l'employé.
+	 */
 	public void setdateArrivee(Date dateArrivee)
 	{
 		this.dateArrivee = dateArrivee;
 	}
 	
+	/**
+	 * Change le date de départ.
+	 * @param dateDepart la nouvelle date de départ de l'employé. 
+	 */
 	public Date getdateDepart()
 	{
 		return dateDepart;
 	}
-
+	
+	/**
+	 * Retourne la date de départ de l'employé.
+	 * @return la date de départ de l'employé.
+	 */
 	public void setdateDepart(Date dateDepart)
 	{
 		this.dateDepart = dateDepart;
 	}
+	
+	
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.

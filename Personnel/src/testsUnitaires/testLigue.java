@@ -17,12 +17,19 @@ import personnel.ImpossibleDeSupprimerRoot;
 import personnel.Ligue;
 import personnel.SauvegardeImpossible;
 
-class testLigue 
+
+class TestLigue 
 {
+	/*
+	 * Initialisation des variables de la classe
+	 */
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 	static final String PASSWORD = "azerty";
 	
+	/*
+	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 */
 	@Test
 	void testAddLigue() throws SauvegardeImpossible
 	{
@@ -31,6 +38,10 @@ class testLigue
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 	}
 
+	/*
+	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 * avec un Id
+	 */
 	@Test
 	void testAddLigueById() throws SauvegardeImpossible
 	{
@@ -40,6 +51,9 @@ class testLigue
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 	}
 	
+	/*
+	 * Ce test permet de vérifier si la fonction AddEmploye fonctionne
+	 */
 	@Test
 	void testAddEmploye() throws SauvegardeImpossible
 	{
@@ -48,6 +62,9 @@ class testLigue
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	
+	/*
+	 * Ce test permet de vérifier si la fonction GetLigues fonctionne
+	 */
 	@Test
 	void testGetLigues() throws SauvegardeImpossible{
 		gestionPersonnel.addLigue("Fléchettes");
@@ -56,6 +73,9 @@ class testLigue
 		assertEquals(2, gestionPersonnel.getLigues().size());
 	}
 
+	/*
+	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 */
 	@Test
 	void testGetLigue() throws SauvegardeImpossible{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
@@ -72,6 +92,9 @@ class testLigue
 		assertNull(ligueByAdmin);
 	}
 	
+	/*
+	 * Ce test permet de vérifier si la fonction RemoveLigues fonctionne
+	 */
 	@Test
 	void testRemoveLigues() throws SauvegardeImpossible{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
@@ -80,6 +103,9 @@ class testLigue
 		assertTrue(gestionPersonnel.getLigues().isEmpty());
 	}
 	
+	/*
+	 * Ce test permet de vérifier si la fonction SetAdministrateur fonctionne
+	 */
 	@Test
 	void testSetAdministrateur() throws SauvegardeImpossible {
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");

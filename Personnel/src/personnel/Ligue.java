@@ -112,6 +112,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 
 	public Employe addEmploye(String nom, String prenom, String mail, String password, String dateArrivee, String dateDepart)
 	{
+		/*
+		 * Transforme la chaîne de caractère en Date
+		 */
 		try {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		
