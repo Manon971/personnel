@@ -26,6 +26,9 @@ class testEmploye {
 		});
 	}
 	
+	/*
+	 * Ce test permet de supprimer l'employé d'une ligue
+	 */
 	@Test
 	void testRemoveEmploye() {
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
@@ -36,6 +39,10 @@ class testEmploye {
 		assertFalse(ligue.getEmployes().contains(employe));
 		assertEquals(this.gestionPersonnel.getRoot(), ligue.getAdministrateur());
 	}
+	/*
+	 * Ce test permet de vérifier si le bon employé
+	 * a été supprimé
+	 */
 	
 	@Test
 	void testRemoveEmploye1() {
@@ -51,6 +58,9 @@ class testEmploye {
 		assertNotEquals(this.gestionPersonnel.getRoot(), ligue.getAdministrateur());
 		assertEquals(employe1, ligue.getAdministrateur());
 	}
+	/*
+	 * Ce test permet de vérifier la méthode checkPassword
+	 */
 	@Test
 	void testcheckPassword(){
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
@@ -60,6 +70,9 @@ class testEmploye {
 		assertFalse(employe.checkPassword("tata"));
 	}
 	
+	/*
+	 * Ce test permet de vérifier si l'employé est admin ou non
+	 */
 	@Test
 	void testEstAdmin() {
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
