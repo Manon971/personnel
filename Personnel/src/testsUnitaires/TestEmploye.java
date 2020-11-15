@@ -13,7 +13,7 @@ import personnel.GestionPersonnel;
 import personnel.ImpossibleDeSupprimerRoot;
 import personnel.Ligue;
 
-class testEmploye {
+class TestEmploye {
 	// GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	static final String PASSWORD = "azerty";
