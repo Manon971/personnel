@@ -3,14 +3,17 @@ package testsUnitaires;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.SimpleDateFormat;
 
 import org.junit.jupiter.api.Test;
 
+import personnel.DroitsInsuffisants;
 import personnel.Employe;
 import personnel.GestionPersonnel;
+import personnel.ImpossibleDeSupprimerRoot;
 import personnel.Ligue;
 import personnel.SauvegardeImpossible;
 
@@ -76,6 +79,17 @@ class testLigue
 		ligue.remove();
 		assertTrue(gestionPersonnel.getLigues().isEmpty());
 	}
+	
+	@Test
+	void testSetAdministrateur() throws SauvegardeImpossible {
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Ligue ligue1 = gestionPersonnel.addLigue("Foot");
+		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
+		assertThrows(DroitsInsuffisants.class, () -> {
+			ligue1.setAdministrateur(employe);
+		});
+	}
+	
 	
 	
 }

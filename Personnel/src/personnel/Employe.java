@@ -154,7 +154,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		return dateDepart;
 	}
 
-	public void setdateDeapart(Date dateDepart)
+	public void setdateDepart(Date dateDepart)
 	{
 		this.dateDepart = dateDepart;
 	}
