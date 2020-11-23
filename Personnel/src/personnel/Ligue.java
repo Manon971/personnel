@@ -120,7 +120,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		
 			Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
-			if (employe.getdateArrivee().compareTo(employe.getdateDepart())>0)
+			if (employe.getdateDepart().compareTo(employe.getdateArrivee())>0)
 				{
 				employes.add(employe);
 				return employe;
