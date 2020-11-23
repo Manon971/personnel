@@ -1,5 +1,6 @@
 package personnel;
 
+import java.io.Console;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -119,12 +120,24 @@ public class Ligue implements Serializable, Comparable<Ligue>
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		
 			Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
-			employes.add(employe);
-			return employe;
+			if (employe.getdateArrivee().compareTo(employe.getdateDepart())>0)
+				{
+				employes.add(employe);
+				return employe;
+				}
+			else {
+				System.out.println("La date de d'arrivée doit être inférieur a la date de départ");
+				return null;
+			}
+				
+			
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 			return null;
 		}
+		
+		
+		
 	}
 	
 	void remove(Employe employe)
