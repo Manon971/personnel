@@ -22,7 +22,7 @@ public class JDBC implements Passerelle
 		}
 		catch (ClassNotFoundException e)
 		{
-			System.out.println("Pilote JDBC non installé.");
+			System.out.println("Pilote JDBC non installe.");
 		}
 		catch (SQLException e)
 		{
