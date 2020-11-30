@@ -116,28 +116,40 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		/*
 		 * Transforme la chaine de caractere en Date
 		 */
-		try {
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-		
-			Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
-			if (employe.getdateDepart().compareTo(employe.getdateArrivee())>0)
-				{
-				employes.add(employe);
-				return employe;
+		if (Integer.parseInt(dateArrivee.substring(0,2))<=31 && Integer.parseInt(dateDepart.substring(0,2))<=31) {
+			if (Integer.parseInt(dateArrivee.substring(3,5))<=12 && Integer.parseInt(dateDepart.substring(3,5))<=12) {			
+				try {
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+				
+					Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
+					if (employe.getdateDepart().compareTo(employe.getdateArrivee())>0)
+						{
+						employes.add(employe);
+						return employe;
+						}
+					else {
+						System.out.println("La date de depart doit etre superieur a la date d'arrivee");
+						
+						return null;
+					}
+						
+					
+				} catch (ParseException ex) {
+					ex.printStackTrace();
+					return null;
 				}
-			else {
-				System.out.println("La date de depart doit etre superieur a la date d'arrivee");
+			}
+			else 
+			{
+				System.out.println("Le mois des dates doit etre inferieur ou egal a 12");
 				return null;
 			}
-				
-			
-		} catch (ParseException ex) {
-			ex.printStackTrace();
+		}
+		else 
+		{
+			System.out.println("Le jour des dates doit etre inferieur ou egal a 31");
 			return null;
 		}
-		
-		
-		
 	}
 	
 	void remove(Employe employe)
