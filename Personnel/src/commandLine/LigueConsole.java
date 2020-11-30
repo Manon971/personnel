@@ -113,7 +113,7 @@ public class LigueConsole
 		Menu menu = new Menu("Gerer les employes de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
-		menu.add(selectionnerEmploye(ligue));
+		menu.add(selectionnerEmployes(ligue));
 		
 		menu.addBack("q");
 		return menu;
@@ -185,14 +185,14 @@ public class LigueConsole
 				);
 	}
 	
-	private Menu selectionnerEmploye(Ligue ligue)
-	{
-		Menu menu = new Menu("Selectionner les employes de " + ligue.getNom(), "d");
-		menu.add(modifierEmploye(ligue));
-		menu.add(supprimerEmploye(ligue));
-		menu.addBack("q");
-		return menu;
-	}
+//	private Menu selectionnerEmploye(Ligue ligue)
+//	{
+//		Menu menu = new Menu("Selectionner les employes de " + ligue.getNom(), "d");
+//		menu.add(modifierEmploye(ligue));
+//		menu.add(supprimerEmploye(ligue));
+//		menu.addBack("q");
+//		return menu;
+//	}
 	
 	
 	
