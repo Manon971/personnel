@@ -136,11 +136,6 @@ public class LigueConsole
 			}	
 	
 	
-	ListOption<Employe> changerAdministrateur()
-	{
-		return (employe) -> changerAdministrateur(employe);		
-	}
-	
 	
 	private Menu changerAdministrateur(Employe employe)
 	{
