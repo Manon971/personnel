@@ -29,7 +29,7 @@ public class Serialization implements personnel.Passerelle
 	
 	/**
 	 * Sauvegarde le gestionnaire pour qu'il soit ouvert automatiquement 
-	 * lors d'une exécution ultérieure du programme.
+	 * lors d'une execution ulterieure du programme.
 	 * @throws SauvegardeImpossible Si le support de sauvegarde est inaccessible.
 	 */
 	@Override

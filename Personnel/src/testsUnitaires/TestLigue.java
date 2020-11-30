@@ -28,61 +28,61 @@ class TestLigue
 	static final String PASSWORD = "azerty";
 	
 	/*
-	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 * Ce test permet de verifier si la fonction AddLigue fonctionne
 	 */
 	@Test
 	void testAddLigue() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		assertEquals("Fléchettes", ligue.getNom());
+		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
+		assertEquals("Flechettes", ligue.getNom());
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 	}
 
 	/*
-	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 * Ce test permet de verifier si la fonction AddLigue fonctionne
 	 * avec un Id
 	 */
 	@Test
 	void testAddLigueById() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1, "Fléchettes");
-		assertEquals("Fléchettes", ligue.getNom());
+		Ligue ligue = gestionPersonnel.addLigue(1, "Flechettes");
+		assertEquals("Flechettes", ligue.getNom());
 		//assertEquals(1, ligue.getId());
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 	}
 	
 	/*
-	 * Ce test permet de vérifier si la fonction AddEmploye fonctionne
+	 * Ce test permet de verifier si la fonction AddEmploye fonctionne
 	 */
 	@Test
 	void testAddEmploye() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", PASSWORD, "01/01/2010", "02/01/2020"); 
+		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
+		Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", PASSWORD, "01/01/2010", "02/01/2020"); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	
 	/*
-	 * Ce test permet de vérifier si la fonction GetLigues fonctionne
+	 * Ce test permet de verifier si la fonction GetLigues fonctionne
 	 */
 	@Test
 	void testGetLigues() throws SauvegardeImpossible{
-		gestionPersonnel.addLigue("Fléchettes");
+		gestionPersonnel.addLigue("Flechettes");
 		gestionPersonnel.addLigue("Foot");
 		
 		assertEquals(2, gestionPersonnel.getLigues().size());
 	}
 
 	/*
-	 * Ce test permet de vérifier si la fonction AddLigue fonctionne
+	 * Ce test permet de verifier si la fonction AddLigue fonctionne
 	 */
 	@Test
 	void testGetLigue() throws SauvegardeImpossible{
-		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
 		Employe administrateur = ligue.addEmploye("Admin", "Admin", "admin@gmail.com", PASSWORD, null, null); 
 		ligue.setAdministrateur(administrateur);
 		
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", PASSWORD, null, null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", PASSWORD, null, null);
 		
 		Ligue ligueByAdmin = gestionPersonnel.getLigue(administrateur);
 		assertNotNull(ligueByAdmin);
@@ -93,22 +93,22 @@ class TestLigue
 	}
 	
 	/*
-	 * Ce test permet de vérifier si la fonction RemoveLigues fonctionne
+	 * Ce test permet de verifier si la fonction RemoveLigues fonctionne
 	 */
 	@Test
 	void testRemoveLigues() throws SauvegardeImpossible{
-		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		assertEquals("Fléchettes", ligue.getNom());
+		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
+		assertEquals("Flechettes", ligue.getNom());
 		ligue.remove();
 		assertTrue(gestionPersonnel.getLigues().isEmpty());
 	}
 	
 	/*
-	 * Ce test permet de vérifier si la fonction SetAdministrateur fonctionne
+	 * Ce test permet de verifier si la fonction SetAdministrateur fonctionne
 	 */
 	@Test
 	void testSetAdministrateur() throws SauvegardeImpossible {
-		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Ligue ligue = gestionPersonnel.addLigue("Flechettes");
 		Ligue ligue1 = gestionPersonnel.addLigue("Foot");
 		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
 		assertThrows(DroitsInsuffisants.class, () -> {

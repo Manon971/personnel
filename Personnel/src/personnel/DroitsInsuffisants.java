@@ -1,7 +1,7 @@
 package personnel;
 
 /**
- * Levée si un administrateur tente d'effectuer une opération sur une 
+ * Levee si un administrateur tente d'effectuer une operation sur une 
  * autre ligue que la sienne.
  */
 

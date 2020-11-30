@@ -1,7 +1,7 @@
 package personnel;
 
 /**
- * Levée si l'on tente de supprimer le super-utilisateur.
+ * Levee si l'on tente de supprimer le super-utilisateur.
  */
 
 public class ImpossibleDeSupprimerRoot extends RuntimeException

@@ -27,11 +27,11 @@ class TestEmploye {
 	}
 	
 	/*
-	 * Ce test permet de supprimer l'employé d'une ligue
+	 * Ce test permet de supprimer l'employe d'une ligue
 	 */
 	@Test
 	void testRemoveEmploye() {
-		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
+		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
 		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
 		assertTrue(ligue.getEmployes().contains(employe));
 		ligue.setAdministrateur(employe);
@@ -40,13 +40,13 @@ class TestEmploye {
 		assertEquals(this.gestionPersonnel.getRoot(), ligue.getAdministrateur());
 	}
 	/*
-	 * Ce test permet de vérifier si le bon employé
-	 * a été supprimé
+	 * Ce test permet de verifier si le bon employe
+	 * a ete supprime
 	 */
 	
 	@Test
 	void testRemoveEmploye1() {
-		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
+		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
 		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
 		Employe employe1 = ligue.addEmploye("toto1", "toto1", "toto1@toto.com", PASSWORD, null, null);
 		assertTrue(ligue.getEmployes().contains(employe));
@@ -59,11 +59,11 @@ class TestEmploye {
 		assertEquals(employe1, ligue.getAdministrateur());
 	}
 	/*
-	 * Ce test permet de vérifier la méthode checkPassword
+	 * Ce test permet de verifier la methode checkPassword
 	 */
 	@Test
 	void testcheckPassword(){
-		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
+		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
 		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
 		assertTrue(employe.checkPassword(PASSWORD));
 		
@@ -71,11 +71,11 @@ class TestEmploye {
 	}
 	
 	/*
-	 * Ce test permet de vérifier si l'employé est admin ou non
+	 * Ce test permet de verifier si l'employe est admin ou non
 	 */
 	@Test
 	void testEstAdmin() {
-		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechète");
+		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
 		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
 		assertFalse(employe.estAdmin(ligue));
 		
