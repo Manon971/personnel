@@ -32,7 +32,7 @@ class TestEmploye {
 	@Test
 	void testRemoveEmploye() {
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
-		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
+		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, "01/03/2000", "02/03/2001");
 		assertTrue(ligue.getEmployes().contains(employe));
 		ligue.setAdministrateur(employe);
 		employe.remove();
@@ -47,8 +47,8 @@ class TestEmploye {
 	@Test
 	void testRemoveEmploye1() {
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
-		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
-		Employe employe1 = ligue.addEmploye("toto1", "toto1", "toto1@toto.com", PASSWORD, null, null);
+		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, "01/03/2000", "02/03/2001");
+		Employe employe1 = ligue.addEmploye("toto1", "toto1", "toto1@toto.com", PASSWORD, "01/03/2000", "02/03/2001");
 		assertTrue(ligue.getEmployes().contains(employe));
 		assertTrue(ligue.getEmployes().contains(employe1));
 		
@@ -64,7 +64,7 @@ class TestEmploye {
 	@Test
 	void testcheckPassword(){
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
-		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
+		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, "01/03/2000", "02/03/2001");
 		assertTrue(employe.checkPassword(PASSWORD));
 		
 		assertFalse(employe.checkPassword("tata"));
@@ -76,7 +76,7 @@ class TestEmploye {
 	@Test
 	void testEstAdmin() {
 		Ligue ligue = this.gestionPersonnel.addLigue(1, "Flechete");
-		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, null, null);
+		Employe employe = ligue.addEmploye("toto", "toto", "toto@toto.com", PASSWORD, "01/03/2000", "02/03/2001");
 		assertFalse(employe.estAdmin(ligue));
 		
 		ligue.setAdministrateur(employe);
