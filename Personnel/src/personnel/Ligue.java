@@ -126,7 +126,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 				return employe;
 				}
 			else {
-				System.out.println("La date de depart doit etre superieur a la date de depart");
+				System.out.println("La date de depart doit etre superieur a la date d'arrivee");
 				return null;
 			}
 				
