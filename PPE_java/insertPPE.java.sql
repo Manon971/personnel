@@ -1,8 +1,10 @@
+USE MDL;
+
 insert into LIGUE values (1, 'ligue1');
 insert into LIGUE values (2, 'ligue2');
 insert into LIGUE values (3, 'ligue3');
 
-insert into EMPLOYE values (1, 'nom1', 'prenom1', 'nom1.prenom1@gmail.com', 'password1', '24-10-2010', '24-10-2012', 0, 1);
+insert into EMPLOYE values (1, 'nom1', 'prenom1', 'nom1.prenom1@gmail.com', 'password1', '2010-10-24', '2010-10-25', 0, 1);
 insert into EMPLOYE values (2, 'nom2', 'prenom2', 'nom2.prenom2@gmail.com', 'password2', NULL, NULL, 1, 0);
 insert into EMPLOYE values (3, 'nom3', 'prenom3', 'nom3.prenom3@gmail.com', 'password3', NULL, NULL, 0, 0);
 insert into EMPLOYE values (4, 'nom4', 'prenom4', 'nom4.prenom4@gmail.com', 'password4', NULL, NULL, 0, 0);
