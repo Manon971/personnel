@@ -1,8 +1,5 @@
 drop database if exists MDL;
 
-drop table if exists EMPLOYE;
-drop table if exists LIGUE;
-
 create database MDL;
 
 
