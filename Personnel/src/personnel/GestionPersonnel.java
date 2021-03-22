@@ -9,8 +9,8 @@ import java.util.TreeSet;
  * Gestion du personnel. Un seul objet de cette classe existe.
  * Il n'est pas possible d'instancier directement cette classe, 
  * la methode {@link #getGestionPersonnel getGestionPersonnel} 
- * le fait automatiquement et retourne toujours le meªme objet.
- * Dans le cas oe¹ {@link #sauvegarder()} a ete appele lors 
+ * le fait automatiquement et retourne toujours le meï¿½me objet.
+ * Dans le cas oeï¿½ {@link #sauvegarder()} a ete appele lors 
  * d'une execution precedente, c'est l'objet sauvegarde qui est
  * retourne.
  */
@@ -22,12 +22,12 @@ public class GestionPersonnel implements Serializable
 	private SortedSet<Ligue> ligues;
 	private Employe root = new Employe(this, null, "root", "", "", "toor", null, null);
 	public final static int SERIALIZATION = 1, JDBC = 2, 
-			TYPE_PASSERELLE = SERIALIZATION;  
+			TYPE_PASSERELLE = JDBC;  
 	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new jdbc.JDBC() : new serialisation.Serialization();	
 	
 	/**
 	 * Retourne l'unique instance de cette classe.
-	 * Cree cet objet s'il n'existe deje .
+	 * Cree cet objet s'il n'existe dejeï¿½.
 	 * @return l'unique objet de type {@link GestionPersonnel}.
 	 */
 	

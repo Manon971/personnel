@@ -17,8 +17,8 @@ public class JDBC implements Passerelle
 	{
 		try
 		{
-			Class.forName(CredentialsExample.getDriverClassName());
-			connection = DriverManager.getConnection(CredentialsExample.getUrl(), CredentialsExample.getUser(), CredentialsExample.getPassword());
+			Class.forName(ConnexionBDD.getDriverClassName());
+			connection = DriverManager.getConnection(ConnexionBDD.getUrl(), ConnexionBDD.getUser(), ConnexionBDD.getPassword());
 		}
 		catch (ClassNotFoundException e)
 		{
@@ -74,7 +74,7 @@ public class JDBC implements Passerelle
 		try 
 		{
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("insert into ligue (nom) values(?)", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("insert into ligue (nom_ligue) values(?)", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());		
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
