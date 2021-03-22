@@ -18,10 +18,10 @@ public class Fenetre
   f.setTitle("Gestion des ligues");
   f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
   f.setContentPane(panel);
-  panel.setBackground(Color.pink);
-  f.setBackground(Color.pink);
+  panel.setBackground(Color.gray);
+  f.setBackground(Color.gray);
   panel.setLayout(new FlowLayout());
-  f.setSize(200, 200);
+  f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH);
   JLabel label = new JLabel("Maison des ligues");
   panel.add(label);
   label.setFont(new Font("Serif", Font.BOLD, 40));
