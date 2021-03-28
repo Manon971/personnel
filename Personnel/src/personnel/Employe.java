@@ -5,8 +5,8 @@ import java.util.Date;
 
 /**
  * Employe d'une ligue hebergee par la M2L. Certains peuvent 
- * eªtre administrateurs des employes de leur ligue.
- * Un seul employe, rattache e  aucune ligue, est le root.
+ * eï¿½tre administrateurs des employes de leur ligue.
+ * Un seul employe, rattache eï¿½ aucune ligue, est le root.
  * Il est impossible d'instancier directement un employe, 
  * il faut passer la methode {@link Ligue#addEmploye addEmploye}.
  */
@@ -17,15 +17,17 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * On rajoute les variables de dateArrivee et dateDepart
 	 */
 	private static final long serialVersionUID = 4795721718037994734L;
+	private int id;
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	private Date dateArrivee = null;
 	private Date dateDepart = null;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, Date dateArrivee, Date dateDepart)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, int id, String nom, String prenom, String mail, String password, Date dateArrivee, Date dateDepart)
 	{
 		this.gestionPersonnel = gestionPersonnel;
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.password = password;
@@ -60,6 +62,11 @@ public class Employe implements Serializable, Comparable<Employe>
 		return GestionPersonnel.getGestionPersonnel().getRoot() == this;
 	}
 	
+	public int getId()
+	{
+		return id;
+	}
+
 	/**
 	 * Retourne le nom de l'employe.
 	 * @return le nom de l'employe. 
@@ -181,8 +188,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	
 	/**
-	 * Retourne la ligue e  laquelle l'employe est affecte.
-	 * @return la ligue e  laquelle l'employe est affecte.
+	 * Retourne la ligue eï¿½ laquelle l'employe est affecte.
+	 * @return la ligue eï¿½ laquelle l'employe est affecte.
 	 */
 	
 	public Ligue getLigue()

@@ -24,6 +24,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	private SortedSet<Employe> employes;
 	private Employe administrateur;
 	private GestionPersonnel gestionPersonnel;
+	private static Passerelle passerelle = GestionPersonnel.TYPE_PASSERELLE == GestionPersonnel.JDBC ? new jdbc.JDBC() : new serialisation.Serialization();
 	
 	/**
 	 * Cree une ligue.
@@ -88,7 +89,14 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		Employe root = GestionPersonnel.getGestionPersonnel().getRoot();
 		if (administrateur != root && administrateur.getLigue() != this)
 			throw new DroitsInsuffisants();
+		Employe ancienAdministrateur = this.administrateur;
 		this.administrateur = administrateur;
+		try {
+			this.passerelle.updateLigueAdmin(id, administrateur);
+		}
+		catch(SauvegardeImpossible exeption){
+			this.administrateur = ancienAdministrateur;
+		}
 	}
 
 	/**
@@ -111,7 +119,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @return l'employe cree. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom, String mail, String password, String dateArrivee, String dateDepart)
+	public Employe addEmploye(int id, String nom, String prenom, String mail, String password, String dateArrivee, String dateDepart)
 	{
 		/*
 		 * Transforme la chaine de caractere en Date
@@ -119,8 +127,8 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		try {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 				
-			Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
-			if (employe.getdateDepart().compareTo(employe.getdateArrivee())>0)
+			Employe employe = new Employe(this.gestionPersonnel, this, id, nom, prenom, mail, password, dateArrivee == null ? null : simpleDateFormat.parse(dateArrivee), dateDepart == null ? null : simpleDateFormat.parse(dateDepart));
+			if (employe.getdateDepart() == null || employe.getdateDepart().compareTo(employe.getdateArrivee())>0)
 				{
 				employes.add(employe);
 				return employe;
