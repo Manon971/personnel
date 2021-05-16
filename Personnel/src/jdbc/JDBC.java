@@ -25,6 +25,7 @@ public class JDBC implements Passerelle
 	private static final String SELECT_EMPLOYE_BYLIGUE = "select id_employe, nom_employe, prenom_employe, mail_employe, password_employe, date_arrivee, date_depart, est_admin, est_root, id_ligue from employe";
 	private static final String UPDATE_LIGUE_NOADMIN = "update employe set est_admin = 0 where id_ligue = (?)";
 	private static final String UPDATE_LIGUE_ADMIN = "update employe set est_admin = 1 where id_ligue = (?) and id_employe = (?)";
+	private static final String DELETE_LIGUE = "delete from ligue where id_ligue = (?)";
 	
 	Connection connection;
 
@@ -150,4 +151,11 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}
 	}
+
+	@Override
+	public int deleteLigue(Ligue ligue) throws SauvegardeImpossible {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

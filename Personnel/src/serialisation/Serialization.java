@@ -57,4 +57,8 @@ public class Serialization implements personnel.Passerelle
 	{
 		return;
 	}
+	public int deleteLigue(Ligue ligue)  throws SauvegardeImpossible
+	{
+		return -1;
+	}
 }
